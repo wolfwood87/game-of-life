@@ -12,7 +12,7 @@ const container = {
     display: "grid",
     gridTemplateColumns: "repeat(25, 15px)",
     gridTemplateRows: "repeat(25, 15px)",
-    width: "22.9%",
+    width: "23%",
     margin: "auto",
     marginTop: "1%",
     height: "23.4em"
@@ -20,8 +20,11 @@ const container = {
 const buttonContainer = {
     display: "flex",
     marginTop: "2%",
-    justifyContent: "space-evenly",
+    justifyContent: "center",
     width: "100%",
+}
+const button = {
+    marginLeft: "1%"
 }
 const heading = {
     textAlign: "center",
@@ -133,22 +136,22 @@ RunGame(runAlgorithm, 1000, currentState, clickable)
                 {currentState.map((branch, i) => (
                     <Cell cell={branch} key={i} setCell={setCell} gen = {currentGen} clickable={clickable}/>
                 ))}
-            <div>
+                </div>
+                <div>
                     {playing == false ? (
                     <div style={buttonContainer}>
-                        <button onClick={(e) => {e.preventDefault(); startPlay(); runAlgorithm()}}>Play</button>
-                        <button disabled>Stop</button>
-                        <button onClick={clearBoard}>Clear</button>
+                        <button style={button} onClick={(e) => {e.preventDefault(); startPlay(); runAlgorithm()}}>Play</button>
+                        <button style={button} disabled>Stop</button>
+                        <button style={button} onClick={clearBoard}>Clear</button>
                     </div>
                     ) : (
                     <div style={buttonContainer}>
-                        <button disabled>Play</button>
-                        <button onClick={stopPlay}>Stop</button>
-                        <button disabled>Clear</button>
+                        <button style={button} disabled>Play</button>
+                        <button style={button} onClick={stopPlay}>Stop</button>
+                        <button style={button} disabled>Clear</button>
                     </div>
                     )}
                 </div>                   
-            </div>
         </div>
     )
 }
