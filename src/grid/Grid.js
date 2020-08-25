@@ -53,9 +53,15 @@ const setCell = (cell) => {
     console.log(newState)
 }
 
+const clearBoard = e => {
+    e.preventDefault()
+    if(clickable){
+        setCurrentState(tree)
+    }
+}
 function findNeighbors(x, y) {
     let neighbors = []
-    const directions = [[x-1, y-1], [x-1, y], [x-1, y+1], [x, y+1], [x+1, y+1], [x+1, y-1], [x, y-1]]
+    const directions = [[x-1, y-1], [x-1, y], [x-1, y+1], [x, y+1], [x+1, y+1], [x+1, y-1], [x, y-1], [x+1, y]]
     for (let i = 0; i < directions.length; i++){
         const neigh = directions[i]
         let x = neigh[0]
@@ -100,7 +106,7 @@ const runAlgorithm = () => {
                 }
                 console.log("living neighbors:", living)
                 if (cell.alive && (living === 2 || living === 3)){
-                    return cell
+                    return {...cell, alive: true}
                 }
                 if (cell.alive && (living < 2 || living >= 4))
                     {
@@ -111,7 +117,7 @@ const runAlgorithm = () => {
                     console.log("hello")
                     return {...cell, alive: true}
                 }
-                return cell
+                return {...cell, alive: false}
             })
             setCurrentGen(currentGen + 1)
             setCurrentState(nextGen)
@@ -132,13 +138,13 @@ RunGame(runAlgorithm, 1000, currentState, clickable)
                     <div style={buttonContainer}>
                         <button onClick={(e) => {e.preventDefault(); startPlay(); runAlgorithm()}}>Play</button>
                         <button disabled>Stop</button>
-                        <button>Clear</button>
+                        <button onClick={clearBoard}>Clear</button>
                     </div>
                     ) : (
                     <div style={buttonContainer}>
                         <button disabled>Play</button>
                         <button onClick={stopPlay}>Stop</button>
-                        <button>Clear</button>
+                        <button disabled>Clear</button>
                     </div>
                     )}
                 </div>                   
