@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import {Node, QuadTree} from "./Tree.js"
 import CellRows from "./CellRows.js";
 import { connect } from "react-redux"
-
+import RunGame from "./rungame.js";
 function GridDisplay(props) {
     
     const [columns, setcolumns] = useState(25)
@@ -16,7 +16,7 @@ function GridDisplay(props) {
 
     return (
         <div style={grid}>
-            {[...Array(columns)].map((e, i) => <CellRows y = {i}/>)}
+            {[...Array(columns)].map((e, i) => <CellRows y = {i} playing={props.playing}/>)}
             
         </div>
     )
