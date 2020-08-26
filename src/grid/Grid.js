@@ -8,8 +8,8 @@ import Presets from "./Presets.js"
 export default function Grid(props) {
 const [aliveModal, setAliveModal] = useState(false)
 const [deadModal, setDeadModal] = useState(false)
-const [aliveColor, setAliveColor] = useState("#000000")
-const [deadColor, setDeadColor] = useState("#BBBBBB")
+const [aliveColor, setAliveColor] = useState({a: 100, b: 0, g: 0, r: 0})
+const [deadColor, setDeadColor] = useState({a: 1, b: 187, g: 187, r: 187})
 const aliveNode = useRef()
 const deadNode = useRef()
 const [playing, setPlaying] = useState(false)
@@ -23,7 +23,7 @@ const container = {
 }
 const gridContainer = {
     border: "1px solid black",
-    backgroundColor: deadColor,
+    backgroundColor: `rgba(${deadColor.r}, ${deadColor.g}, ${deadColor.b}, ${deadColor.a})`,
     display: "grid",
     gridTemplateColumns: "repeat(25, 15px)",
     gridTemplateRows: "repeat(25, 15px)",
@@ -52,13 +52,13 @@ const presetContainer = {
 
 const aliveButton = {
     border: "1px solid green",
-    backgroundColor: aliveColor,
+    backgroundColor: `rgba(${aliveColor.r}, ${aliveColor.g}, ${aliveColor.b}, ${aliveColor.a})`,
     width: "5%",
     marginRight: "1%"
 }
 const deadButton = {
     border: "1px solid green",
-    backgroundColor: deadColor,
+    backgroundColor: `rgba(${deadColor.r}, ${deadColor.g}, ${deadColor.b}, ${deadColor.a})`,
     width: "5%"
 }
 
@@ -89,10 +89,11 @@ const setGrid = (grid) => {
     setCurrentState(grid)
 }
 const newAlive = color => {
-    setAliveColor(color.hex)
+    console.log(color)
+    setAliveColor(color.rgb)
 }
 const newDead = color => {
-    setDeadColor(color.hex)
+    setDeadColor(color.rgb)
 }
 const setCell = (cell) => {
     let newState = currentState.map((branch) => {
