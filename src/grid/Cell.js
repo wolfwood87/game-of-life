@@ -14,8 +14,7 @@ export default function Cell(props) {
         border: "1px solid grey",
         margin: ".08%",
         width: "15px",
-        backgroundColor: 'rgb(' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ')',
-        // backgroundColor: "black"
+        backgroundColor: props.aliveColor
     }
     const handleClick = e => {
         if(props.clickable===true){

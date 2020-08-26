@@ -1,16 +1,29 @@
-import React, {useState, useEffect} from "react";
+import React, {useState, useRef, useEffect} from "react";
 import Cell from "./Cell.js";
 import RunGame from "./rungame.js";
 import grid from "./Grids.js"
+import { SketchPicker } from "react-color"
 import findNeighbors from "./FindNeighbors.js"
 import Presets from "./Presets.js"
 export default function Grid(props) {
+const [aliveModal, setAliveModal] = useState(false)
+const [deadModal, setDeadModal] = useState(false)
+const [aliveColor, setAliveColor] = useState("#000000")
+const [deadColor, setDeadColor] = useState("#BBBBBB")
+const aliveNode = useRef()
+const deadNode = useRef()
+const [playing, setPlaying] = useState(false)
+const [currentState, setCurrentState] = useState(grid)
+const [currentGen, setCurrentGen] = useState(0)
+const [clickable, setClickable] = useState(true)
+
+
 const container = {
     display: "flex"
 }
 const gridContainer = {
     border: "1px solid black",
-    backgroundColor: "lightgrey",
+    backgroundColor: deadColor,
     display: "grid",
     gridTemplateColumns: "repeat(25, 15px)",
     gridTemplateRows: "repeat(25, 15px)",
@@ -36,10 +49,33 @@ const presetContainer = {
     height: "84.75%",
     marginLeft: "2%"
 }
-const [playing, setPlaying] = useState(false)
-const [currentState, setCurrentState] = useState(grid)
-const [currentGen, setCurrentGen] = useState(0)
-const [clickable, setClickable] = useState(true)
+
+const aliveButton = {
+    border: "1px solid green",
+    backgroundColor: aliveColor,
+    width: "5%",
+    marginRight: "1%"
+}
+const deadButton = {
+    border: "1px solid green",
+    backgroundColor: deadColor,
+    width: "5%"
+}
+
+const modals = {
+    position: "absolute",
+    left: "10%",
+    top: "31%",
+    
+}
+const openAliveModal = e => {
+    setAliveModal(true)
+    document.addEventListener("mousedown", handleAliveClick);
+}
+const openDeadModal = e => {
+    setDeadModal(true)
+    document.addEventListener("mousedown", handleDeadClick);
+}
 const startPlay = e => {
     setClickable(false)
     setPlaying(true)
@@ -52,7 +88,12 @@ const setGrid = (grid) => {
     setCurrentGen(0)
     setCurrentState(grid)
 }
-
+const newAlive = color => {
+    setAliveColor(color.hex)
+}
+const newDead = color => {
+    setDeadColor(color.hex)
+}
 const setCell = (cell) => {
     let newState = currentState.map((branch) => {
         
@@ -148,7 +189,26 @@ const runAlgorithm = () => {
             setCurrentGen(currentGen + 1)
             setCurrentState(nextGen)
 }
-    
+const handleAliveClick = e => {
+    if (aliveNode.current.contains(e.target)) {
+      // inside click
+      return;
+    }
+    // outside click 
+    document.removeEventListener("mousedown", handleAliveClick)
+    setAliveModal(false)
+  };
+
+const handleDeadClick = e => {
+    if (deadNode.current.contains(e.target)) {
+        // inside click
+        return;
+      }
+      // outside click 
+    document.removeEventListener("mousedown", handleDeadClick);
+    setDeadModal(false)
+
+}
 
 RunGame(runAlgorithm, 1000, currentState, clickable)
     return (
@@ -157,12 +217,14 @@ RunGame(runAlgorithm, 1000, currentState, clickable)
             <h3 style={heading}>Generation {currentGen}</h3>
             <div style={gridContainer}>
                 {currentState.map((branch, i) => (
-                    <Cell cell={branch} key={i} setCell={setCell} gen = {currentGen} clickable={clickable}/>
+                    <Cell cell={branch} key={i} setCell={setCell} gen = {currentGen} clickable={clickable} aliveColor={aliveColor}/>
                 ))}
             </div>
             <div>
                 {playing == false ? (
                 <div style={buttonContainer}>
+                    <div style={aliveButton} onClick={openAliveModal}></div>
+                    <div style={deadButton} onClick={openDeadModal}></div>
                     <button style={button} onClick={(e) => {e.preventDefault(); startPlay(); runAlgorithm()}}>Play</button>
                     <button style={button} disabled>Stop</button>
                     <button style={button} onClick={clearBoard}>Clear</button>
@@ -170,6 +232,8 @@ RunGame(runAlgorithm, 1000, currentState, clickable)
                 </div>
                 ) : (
                 <div style={buttonContainer}>
+                    <div style={aliveButton} disabled></div>
+                    <div style={deadButton} disabled></div>
                     <button style={button} disabled>Play</button>
                     <button style={button} onClick={stopPlay}>Stop</button>
                     <button style={button} disabled>Clear</button>
@@ -181,6 +245,13 @@ RunGame(runAlgorithm, 1000, currentState, clickable)
             <div style={presetContainer}>
                 <Presets setGrid = {setGrid}/>
             </div>
+            {aliveModal && (<div ref={aliveNode} style={modals}>
+                <SketchPicker color={aliveColor} onChange={newAlive}/>
+            </div>)}
+            {deadModal && (
+            <div ref={deadNode} style={modals}>
+                <SketchPicker color={deadColor} onChange={newDead}/>
+            </div>)}
         </div>
     )
 }
