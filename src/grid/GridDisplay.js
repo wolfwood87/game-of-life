@@ -7,7 +7,8 @@ export default function GridDisplay(props) {
     const container = {
         display: "flex",
         flexDirection: "row",
-        border: "1px solid black"
+        marginTop: "5%",
+        justifyContent: "space-evenly",
       }
 
 

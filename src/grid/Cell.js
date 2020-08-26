@@ -19,13 +19,11 @@ export default function Cell(props) {
     }
     const handleClick = e => {
         if(props.clickable===true){
+            console.log(cellblock)
             setClicked(!clicked)
             props.setCell(cellblock)
         }
     }
-    // useEffect(() => {
-
-    // }, [props.currentState])
     useEffect(() => {
         if(props.cell.alive === true){
             setClicked(true)

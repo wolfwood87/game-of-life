@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
 import Cell from "./Cell.js";
 import RunGame from "./rungame.js";
-import tree from "./Tree.js"
+import grid from "./Grids.js"
 import findNeighbors from "./FindNeighbors.js"
 import Presets from "./Presets.js"
 export default function Grid(props) {
@@ -32,13 +32,12 @@ const heading = {
     textAlign: "center",
 }
 const presetContainer = {
-    border: "1px solid black",
     marginTop: "12.3%",
-    height: "85.75%",
-    marginLeft: "1%"
+    height: "84.75%",
+    marginLeft: "2%"
 }
 const [playing, setPlaying] = useState(false)
-const [currentState, setCurrentState] = useState(tree)
+const [currentState, setCurrentState] = useState(grid)
 const [currentGen, setCurrentGen] = useState(0)
 const [clickable, setClickable] = useState(true)
 const startPlay = e => {
@@ -50,28 +49,27 @@ const stopPlay = e => {
     setClickable(true)
 }
 const setGrid = (grid) => {
+    setCurrentGen(0)
     setCurrentState(grid)
 }
 
 const setCell = (cell) => {
-    console.log(cell)
     let newState = currentState.map((branch) => {
         
         if(branch.x === cell.x && branch.y == cell.y) {
-            console.log(branch)
             return {...branch, alive: !branch.alive}
             
         }
         return branch
     })
     setCurrentState(newState)
-    console.log(newState)
 }
 
 const clearBoard = e => {
     e.preventDefault()
     if(clickable){
-        setCurrentState(tree)
+        setCurrentGen(0)
+        setCurrentState(grid)
     }
 }
 function findNeighbors(x, y) {

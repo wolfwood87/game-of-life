@@ -6,9 +6,12 @@ import './App.css';
 
 function App() {
 
-
+const container = {
+  backgroundColor: "#f0f0f0",
+  height: "100vh"
+}
   return (
-    <div>
+    <div style={container}>
       <Header />
       <GridDisplay />
     </div>
