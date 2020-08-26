@@ -1,9 +1,12 @@
 const grid = []
+
 for(var i = 0; i < 25; i++){
     for(var t=0; t < 25; t++){
         grid.push({id:`${i}${t}`, x:i, y:t, alive: false})
     }
 }
+
+
 
 export const beehive = grid.map(cell => {
     if(cell.x === 10 && cell.y === 13) {
@@ -146,4 +149,5 @@ export const spaceship = grid.map(cell => {
     }
     return cell
 })
+
 export default grid

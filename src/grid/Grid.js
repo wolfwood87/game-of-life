@@ -72,6 +72,19 @@ const clearBoard = e => {
         setCurrentState(grid)
     }
 }
+
+const setRandom = e => {
+    e.preventDefault();
+    setCurrentGen(0)
+    const randGrid = []
+    for(var i = 0; i < 25; i++){
+        for(var t=0; t < 25; t++){
+            let rand = Math.random() >= .5
+            randGrid.push({id:`${i}${t}`, x:i, y:t, alive: rand})
+        }
+    }
+    setCurrentState(randGrid)
+}
 function findNeighbors(x, y) {
     let neighbors = []
     const directions = [[x-1, y-1], [x-1, y], [x-1, y+1], [x, y+1], [x+1, y+1], [x+1, y-1], [x, y-1], [x+1, y]]
@@ -153,12 +166,14 @@ RunGame(runAlgorithm, 1000, currentState, clickable)
                     <button style={button} onClick={(e) => {e.preventDefault(); startPlay(); runAlgorithm()}}>Play</button>
                     <button style={button} disabled>Stop</button>
                     <button style={button} onClick={clearBoard}>Clear</button>
+                    <button style={button} onClick={setRandom}>Randomize</button>
                 </div>
                 ) : (
                 <div style={buttonContainer}>
                     <button style={button} disabled>Play</button>
                     <button style={button} onClick={stopPlay}>Stop</button>
                     <button style={button} disabled>Clear</button>
+                    <button style={button} disabled>Randomize</button>
                 </div>
                 )}
             </div>
