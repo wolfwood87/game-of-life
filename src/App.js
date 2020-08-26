@@ -1,15 +1,19 @@
 import React from 'react';
 import { BrowserRouter, Route } from "react-router-dom";
-import Grid from "./grid/Grid";
+import Header from "./ui/Header.js"
+import GridDisplay from "./grid/GridDisplay.js";
 import './App.css';
 
 function App() {
 
 
   return (
-    <BrowserRouter>
-      <Route path="/" component={Grid}/>
-      </BrowserRouter>
+    <div>
+      <Header />
+      <GridDisplay />
+    </div>
+
+
   );
 }
 

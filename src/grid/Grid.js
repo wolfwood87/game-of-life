@@ -1,18 +1,20 @@
 import React, {useState, useEffect} from "react";
-import { connect } from "react-redux";
-import GridDisplay from "./GridDisplay.js"
 import Cell from "./Cell.js";
 import RunGame from "./rungame.js";
 import tree from "./Tree.js"
 import findNeighbors from "./FindNeighbors.js"
-function Grid(props) {
+import Presets from "./Presets.js"
+export default function Grid(props) {
 const container = {
+    display: "flex"
+}
+const gridContainer = {
     border: "1px solid black",
     backgroundColor: "lightgrey",
     display: "grid",
     gridTemplateColumns: "repeat(25, 15px)",
     gridTemplateRows: "repeat(25, 15px)",
-    width: "23%",
+    width: "100%",
     margin: "auto",
     marginTop: "1%",
     height: "23.4em"
@@ -29,6 +31,12 @@ const button = {
 const heading = {
     textAlign: "center",
 }
+const presetContainer = {
+    border: "1px solid black",
+    marginTop: "12.3%",
+    height: "85.75%",
+    marginLeft: "1%"
+}
 const [playing, setPlaying] = useState(false)
 const [currentState, setCurrentState] = useState(tree)
 const [currentGen, setCurrentGen] = useState(0)
@@ -41,6 +49,10 @@ const stopPlay = e => {
     setPlaying(false)
     setClickable(true)
 }
+const setGrid = (grid) => {
+    setCurrentState(grid)
+}
+
 const setCell = (cell) => {
     console.log(cell)
     let newState = currentState.map((branch) => {
@@ -129,42 +141,34 @@ const runAlgorithm = () => {
 
 RunGame(runAlgorithm, 1000, currentState, clickable)
     return (
-        <div>
-            <h1 style={heading}>Conway's Game of Life</h1>
+        <div style={container}>
+            <div>
             <h3 style={heading}>Generation {currentGen}</h3>
-            <div style={container}>
+            <div style={gridContainer}>
                 {currentState.map((branch, i) => (
                     <Cell cell={branch} key={i} setCell={setCell} gen = {currentGen} clickable={clickable}/>
                 ))}
+            </div>
+            <div>
+                {playing == false ? (
+                <div style={buttonContainer}>
+                    <button style={button} onClick={(e) => {e.preventDefault(); startPlay(); runAlgorithm()}}>Play</button>
+                    <button style={button} disabled>Stop</button>
+                    <button style={button} onClick={clearBoard}>Clear</button>
                 </div>
-                <div>
-                    {playing == false ? (
-                    <div style={buttonContainer}>
-                        <button style={button} onClick={(e) => {e.preventDefault(); startPlay(); runAlgorithm()}}>Play</button>
-                        <button style={button} disabled>Stop</button>
-                        <button style={button} onClick={clearBoard}>Clear</button>
-                    </div>
-                    ) : (
-                    <div style={buttonContainer}>
-                        <button style={button} disabled>Play</button>
-                        <button style={button} onClick={stopPlay}>Stop</button>
-                        <button style={button} disabled>Clear</button>
-                    </div>
-                    )}
-                </div>                   
+                ) : (
+                <div style={buttonContainer}>
+                    <button style={button} disabled>Play</button>
+                    <button style={button} onClick={stopPlay}>Stop</button>
+                    <button style={button} disabled>Clear</button>
+                </div>
+                )}
+            </div>
+            </div>
+            <div style={presetContainer}>
+                <Presets setGrid = {setGrid}/>
+            </div>
         </div>
     )
 }
 
-
-const mapStateToProps = state => {
-    return {
-      generation: state.generation,
-      cells: state.cells,
-      currentState: state.currentState,
-      nextState: state.currentState
-    };
-  };
-  
-export default connect(mapStateToProps, {})(Grid);
-  

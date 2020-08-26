@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { connect } from "react-redux";
-import {setCells} from "../actions/cellAction.js";
 
-function Cell(props) {
+
+export default function Cell(props) {
     const [cellblock, setCellBlock] = useState(props.cell)
     const [alive, setAlive] = useState(false)
     const [clicked, setClicked] = useState(false)
@@ -41,12 +40,3 @@ function Cell(props) {
         <div onClick={handleClick} style={clicked ? clickedBlock : block}></div>
     )
 }
-
-const mapStateToProps = state => {
-    return {
-      cells: state.cells,
-    };
-  };
-  
-export default connect(mapStateToProps, {setCells})(Cell);
-

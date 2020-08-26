@@ -1,33 +1,20 @@
 import React, {useState} from "react";
-import {Node, QuadTree} from "./Tree.js"
-import CellRows from "./CellRows.js";
-import { connect } from "react-redux"
-import RunGame from "./rungame.js";
-function GridDisplay(props) {
-    
-    const [columns, setcolumns] = useState(25)
+import Grid from "./Grid.js"
+import Rules from "../ui/Rules.js"
 
-    const grid = {
+export default function GridDisplay(props) {
+
+    const container = {
         display: "flex",
-        height: "100%",
-        flexDirection: "column",
-        justifyContent: "space-evenly"
-    }
+        flexDirection: "row",
+        border: "1px solid black"
+      }
+
 
     return (
-        <div style={grid}>
-            {[...Array(columns)].map((e, i) => <CellRows y = {i} playing={props.playing}/>)}
-            
+        <div style={container}>
+            <Grid />
+            <Rules />
         </div>
     )
 }
-
-const mapStateToProps = state => {
-    return {
-      cells: state.cells,
-      nextState: state.nextState
-    };
-  };
-  
-export default connect(mapStateToProps, { })(GridDisplay);
-  
