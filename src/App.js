@@ -7,7 +7,7 @@ function App() {
 
 const container = {
   backgroundColor: "#f0f0f0",
-  height: "100vh"
+  backgroundSize: "cover"
 }
   return (
     <div style={container}>

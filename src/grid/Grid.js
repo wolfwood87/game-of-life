@@ -81,6 +81,9 @@ const modals = {
     top: "31%",
     
 }
+const gridStyle = {
+    marginRight: "1%"
+}
 
 const slider = {
     marginLeft: "22%"
@@ -240,7 +243,7 @@ RunGame(runAlgorithm, speed, currentState, clickable)
         <div style={container}>
             <div>
             <h3 style={heading}>Generation {currentGen}</h3>
-            <label for="grid">Grid Size:</label>
+            <label for="grid" style={gridStyle}>Grid Size:</label>
             <select name="grids" id="grids" onChange={chooseGrid}>
                 <option value={25}>Small</option>
                 <option value={30}>Medium</option>

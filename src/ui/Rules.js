@@ -2,10 +2,11 @@ import React from "react";
 
 export default function Rules(props) {
     const ruleContainer = {
-        marginTop: "1%",
+        marginTop: "5%",
         border: "1px solid black",
         backgroundColor: "white",
-        width: "33%"
+        width: "33%",
+        height: "25em"
     }
     const ruleHeader = {
         textAlign: "center",

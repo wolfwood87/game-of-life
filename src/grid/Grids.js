@@ -6,146 +6,146 @@ for(var i = 0; i < size; i++){
         grid.push({id:`${i}${t}`, x:i, y:t, alive: false})
     }
 }
+//default 25
 
-
-
+let mid = Math.floor(size/2)
 const beehive = grid.map(cell => {
-    if(cell.x === 10 && cell.y === 13) {
+    if(cell.x === mid-2 && cell.y === mid+1) {
         return {...cell, alive: true}
     }
-    if(cell.x === 10 && cell.y === 12) {
+    if(cell.x === mid-2 && cell.y === mid) {
         return {...cell, alive: true}
     }
-    if(cell.x === 11 && cell.y === 11) {
+    if(cell.x === mid-1 && cell.y === mid-1) {
         return {...cell, alive: true}
     }
-    if(cell.x === 11 && cell.y === 14) {
+    if(cell.x === mid-1 && cell.y === mid+2) {
         return {...cell, alive: true}
     }
-    if(cell.x === 12 && cell.y === 12) {
+    if(cell.x === mid && cell.y === mid) {
         return {...cell, alive: true}
     }
-    if(cell.x === 12 && cell.y === 13) {
+    if(cell.x === mid && cell.y === mid+1) {
         return {...cell, alive: true}
     }
     return cell
 })
 const beacon = grid.map(cell => {
-    if(cell.x === 12 && cell.y === 14) {
+    if(cell.x === mid && cell.y === mid+2) {
         return {...cell, alive: true}
     }
-    if(cell.x === 13 && cell.y === 14) {
+    if(cell.x === mid+1 && cell.y === mid+2) {
         return {...cell, alive: true}
     }
-    if(cell.x === 13 && cell.y === 13) {
+    if(cell.x === mid+1 && cell.y === mid+1) {
         return {...cell, alive: true}
     }
-    if(cell.x === 11 && cell.y === 11) {
+    if(cell.x === mid-1 && cell.y === mid-1) {
         return {...cell, alive: true}
     }
-    if(cell.x === 10 && cell.y === 11) {
+    if(cell.x === mid-2 && cell.y === mid-1) {
         return {...cell, alive: true}
     }
-    if(cell.x === 10 && cell.y === 12) {
+    if(cell.x === mid-2 && cell.y === mid) {
         return {...cell, alive: true}
     }
     return cell
 })
 const glider = grid.map(cell => {
-    if(cell.x === 10 && cell.y === 12) {
+    if(cell.x === mid-2 && cell.y === mid) {
         return {...cell, alive: true}
     }
-    if(cell.x === 11 && cell.y === 13) {
+    if(cell.x === mid-1 && cell.y === mid+1) {
         return {...cell, alive: true}
     }
-    if(cell.x === 12 && cell.y === 13) {
+    if(cell.x === mid && cell.y === mid+1) {
         return {...cell, alive: true}
     }
-    if(cell.x === 12 && cell.y === 12) {
+    if(cell.x === mid && cell.y === mid) {
         return {...cell, alive: true}
     }
-    if(cell.x === 12 && cell.y === 11) {
+    if(cell.x === mid && cell.y === mid-1) {
         return {...cell, alive: true}
     }
     return cell
 })
 const decathlon = grid.map(cell => {
-    if(cell.x === 10 && cell.y === 13) {
+    if(cell.x === mid-2 && cell.y === mid+1) {
         return {...cell, alive: true}
     }
-    if(cell.x === 10 && cell.y === 12) {
+    if(cell.x === mid-2 && cell.y === mid) {
         return {...cell, alive: true}
     }
-    if(cell.x === 10 && cell.y === 11) {
+    if(cell.x === mid-2 && cell.y === mid-1) {
         return {...cell, alive: true}
     }
-    if(cell.x === 13 && cell.y === 11) {
+    if(cell.x === mid+1 && cell.y === mid-1) {
         return {...cell, alive: true}
     }
-    if(cell.x === 13 && cell.y === 12) {
+    if(cell.x === mid+1 && cell.y === mid) {
         return {...cell, alive: true}
     }
-    if(cell.x === 13 && cell.y === 13) {
+    if(cell.x === mid+1 && cell.y === mid+1) {
         return {...cell, alive: true}
     }
-    if(cell.x === 15 && cell.y === 13) {
+    if(cell.x === mid+3 && cell.y === mid+1) {
         return {...cell, alive: true}
     }
-    if(cell.x === 15 && cell.y === 11) {
+    if(cell.x === mid+3 && cell.y === mid-1) {
         return {...cell, alive: true}
     }
-    if(cell.x === 16 && cell.y === 12) {
+    if(cell.x === mid+4 && cell.y === mid) {
         return {...cell, alive: true}
     }
-    if(cell.x === 18 && cell.y === 12) {
+    if(cell.x === mid+6 && cell.y === mid) {
         return {...cell, alive: true}
     }
-    if(cell.x === 19 && cell.y === 12) {
+    if(cell.x === mid+7 && cell.y === mid) {
         return {...cell, alive: true}
     }
-    if(cell.x === 8 && cell.y === 13) {
+    if(cell.x === mid-4 && cell.y === mid+1) {
         return {...cell, alive: true}
     }
-    if(cell.x === 7 && cell.y === 12) {
+    if(cell.x === mid-5 && cell.y === mid) {
         return {...cell, alive: true}
     }
-    if(cell.x === 8 && cell.y === 11) {
+    if(cell.x === mid-4 && cell.y === mid-1) {
         return {...cell, alive: true}
     }
-    if(cell.x === 5 && cell.y === 12) {
+    if(cell.x === mid-7 && cell.y === mid) {
         return {...cell, alive: true}
     }
-    if(cell.x === 4 && cell.y === 12) {
+    if(cell.x === mid-8 && cell.y === mid) {
         return {...cell, alive: true}
     }
     return cell
 })
 const spaceship = grid.map(cell => {
-    if(cell.x === 13 && cell.y === 13) {
+    if(cell.x === mid+1 && cell.y === mid+1) {
         return {...cell, alive: true}
     }
-    if(cell.x === 12 && cell.y === 14) {
+    if(cell.x === mid && cell.y === mid+2) {
         return {...cell, alive: true}
     }
-    if(cell.x === 11 && cell.y === 14) {
+    if(cell.x === mid-1 && cell.y === mid+2) {
         return {...cell, alive: true}
     }
-    if(cell.x === 10 && cell.y === 14) {
+    if(cell.x === mid-2 && cell.y === mid+2) {
         return {...cell, alive: true}
     }
-    if(cell.x === 10 && cell.y === 13) {
+    if(cell.x === mid-2 && cell.y === mid+1) {
         return {...cell, alive: true}
     }
-    if(cell.x === 10 && cell.y === 12) {
+    if(cell.x === mid-2 && cell.y === mid) {
         return {...cell, alive: true}
     }
-    if(cell.x === 10 && cell.y === 11) {
+    if(cell.x === mid-2 && cell.y === mid-1) {
         return {...cell, alive: true}
     }
-    if(cell.x === 11 && cell.y === 10) {
+    if(cell.x === mid-1 && cell.y === mid-2) {
         return {...cell, alive: true}
     }
-    if(cell.x === 13 && cell.y === 10) {
+    if(cell.x === mid+1 && cell.y === mid-2) {
         return {...cell, alive: true}
     }
     return cell
@@ -165,157 +165,3 @@ const spaceship = grid.map(cell => {
             return grid
     }
 }
-
-// const grid = []
-
-// for(var i = 0; i < 25; i++){
-//     for(var t=0; t < 25; t++){
-//         grid.push({id:`${i}${t}`, x:i, y:t, alive: false})
-//     }
-// }
-
-
-
-// export const beehive = grid.map(cell => {
-//     if(cell.x === 10 && cell.y === 13) {
-//         return {...cell, alive: true}
-//     }
-//     if(cell.x === 10 && cell.y === 12) {
-//         return {...cell, alive: true}
-//     }
-//     if(cell.x === 11 && cell.y === 11) {
-//         return {...cell, alive: true}
-//     }
-//     if(cell.x === 11 && cell.y === 14) {
-//         return {...cell, alive: true}
-//     }
-//     if(cell.x === 12 && cell.y === 12) {
-//         return {...cell, alive: true}
-//     }
-//     if(cell.x === 12 && cell.y === 13) {
-//         return {...cell, alive: true}
-//     }
-//     return cell
-// })
-// export const beacon = grid.map(cell => {
-//     if(cell.x === 12 && cell.y === 14) {
-//         return {...cell, alive: true}
-//     }
-//     if(cell.x === 13 && cell.y === 14) {
-//         return {...cell, alive: true}
-//     }
-//     if(cell.x === 13 && cell.y === 13) {
-//         return {...cell, alive: true}
-//     }
-//     if(cell.x === 11 && cell.y === 11) {
-//         return {...cell, alive: true}
-//     }
-//     if(cell.x === 10 && cell.y === 11) {
-//         return {...cell, alive: true}
-//     }
-//     if(cell.x === 10 && cell.y === 12) {
-//         return {...cell, alive: true}
-//     }
-//     return cell
-// })
-// export const glider = grid.map(cell => {
-//     if(cell.x === 10 && cell.y === 12) {
-//         return {...cell, alive: true}
-//     }
-//     if(cell.x === 11 && cell.y === 13) {
-//         return {...cell, alive: true}
-//     }
-//     if(cell.x === 12 && cell.y === 13) {
-//         return {...cell, alive: true}
-//     }
-//     if(cell.x === 12 && cell.y === 12) {
-//         return {...cell, alive: true}
-//     }
-//     if(cell.x === 12 && cell.y === 11) {
-//         return {...cell, alive: true}
-//     }
-//     return cell
-// })
-// export const decathlon = grid.map(cell => {
-//     if(cell.x === 10 && cell.y === 13) {
-//         return {...cell, alive: true}
-//     }
-//     if(cell.x === 10 && cell.y === 12) {
-//         return {...cell, alive: true}
-//     }
-//     if(cell.x === 10 && cell.y === 11) {
-//         return {...cell, alive: true}
-//     }
-//     if(cell.x === 13 && cell.y === 11) {
-//         return {...cell, alive: true}
-//     }
-//     if(cell.x === 13 && cell.y === 12) {
-//         return {...cell, alive: true}
-//     }
-//     if(cell.x === 13 && cell.y === 13) {
-//         return {...cell, alive: true}
-//     }
-//     if(cell.x === 15 && cell.y === 13) {
-//         return {...cell, alive: true}
-//     }
-//     if(cell.x === 15 && cell.y === 11) {
-//         return {...cell, alive: true}
-//     }
-//     if(cell.x === 16 && cell.y === 12) {
-//         return {...cell, alive: true}
-//     }
-//     if(cell.x === 18 && cell.y === 12) {
-//         return {...cell, alive: true}
-//     }
-//     if(cell.x === 19 && cell.y === 12) {
-//         return {...cell, alive: true}
-//     }
-//     if(cell.x === 8 && cell.y === 13) {
-//         return {...cell, alive: true}
-//     }
-//     if(cell.x === 7 && cell.y === 12) {
-//         return {...cell, alive: true}
-//     }
-//     if(cell.x === 8 && cell.y === 11) {
-//         return {...cell, alive: true}
-//     }
-//     if(cell.x === 5 && cell.y === 12) {
-//         return {...cell, alive: true}
-//     }
-//     if(cell.x === 4 && cell.y === 12) {
-//         return {...cell, alive: true}
-//     }
-//     return cell
-// })
-// export const spaceship = grid.map(cell => {
-//     if(cell.x === 13 && cell.y === 13) {
-//         return {...cell, alive: true}
-//     }
-//     if(cell.x === 12 && cell.y === 14) {
-//         return {...cell, alive: true}
-//     }
-//     if(cell.x === 11 && cell.y === 14) {
-//         return {...cell, alive: true}
-//     }
-//     if(cell.x === 10 && cell.y === 14) {
-//         return {...cell, alive: true}
-//     }
-//     if(cell.x === 10 && cell.y === 13) {
-//         return {...cell, alive: true}
-//     }
-//     if(cell.x === 10 && cell.y === 12) {
-//         return {...cell, alive: true}
-//     }
-//     if(cell.x === 10 && cell.y === 11) {
-//         return {...cell, alive: true}
-//     }
-//     if(cell.x === 11 && cell.y === 10) {
-//         return {...cell, alive: true}
-//     }
-//     if(cell.x === 13 && cell.y === 10) {
-//         return {...cell, alive: true}
-//     }
-//     return cell
-// })
-
-// export default grid
