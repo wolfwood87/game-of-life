@@ -4,7 +4,6 @@ import LWSS from "../assets/LWSS.gif"
 import Beacon from "../assets/Beacon.gif"
 import Beehive from "../assets/Beehive.png"
 import lColumn from "../assets/lColumn.gif"
-import {glider, beehive, beacon, spaceship, decathlon} from "./Grids.js"
 export default function Presets(props) {
 const imageContainer= {
     display: "flex",
@@ -33,23 +32,23 @@ const image = {
     return (
         <div style={imageContainer}>
             <h4 style={header}>Presets</h4>
-            <div onClick={() => props.setGrid(beehive)}>
+            <div onClick={() => props.setGrid("beehive")}>
                 <h6 style={subheader}>Beehive</h6>
                 <img src={Beehive} style={image}/>
             </div>
-            <div onClick={() => props.setGrid(beacon)}>
+            <div onClick={() => props.setGrid("beacon")}>
                 <h6 style={subheader}>Beacon</h6>
                 <img src={Beacon} style={image}/>
             </div>
-            <div onClick={() => props.setGrid(spaceship)}>
+            <div onClick={() => props.setGrid("spaceship")}>
                 <h6 style={subheader}>Lightweight SpaceShip</h6>
                 <img src={LWSS} style={image}/>
             </div>
-            <div onClick={() => props.setGrid(glider)}>
+            <div onClick={() => props.setGrid("glider")}>
                 <h6 style={subheader}>Glider</h6>
                 <img src={Glider} style={image}/>
             </div>
-            <div onClick={() => props.setGrid(decathlon)}>
+            <div onClick={() => props.setGrid("decathlon")}>
                 <h6 style={subheader}>Penta-decathlon</h6>
                 <img src={lColumn} style={image}/>
             </div>
