@@ -1,25 +1,29 @@
 import React from 'react';
-import logo from './logo.svg';
+import Header from "./ui/Header.js"
+import GridDisplay from "./grid/GridDisplay.js";
+import Rules from "./ui/Rules.js"
+import About from "./ui/About.js"
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import './App.css';
 
 function App() {
+
+const container = {
+  backgroundColor: "#f5f5f5",
+  backgroundSize: "cover"
+}
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Hello
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <div style={container}>
+        <Header />
+        <Switch>
+          <Route exact path="/" component={GridDisplay} />
+          <Route exact path="/rules" component={Rules} />
+          <Route exact path="/about" component={About} />
+        </Switch>
+      </div>
+    </BrowserRouter>
+
   );
 }
 
