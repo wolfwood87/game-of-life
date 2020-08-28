@@ -55,6 +55,16 @@
 .aboutimage {
   margin-left: 35%
 }
+.mobilecontainer {
+  display: none
+}
+.hamcontainer {
+  display: none
+}
+.heading {
+  justify-content: center
+}
+
 @media (max-width: 900px){
   .displaycontainer {
     flex-direction: column;
@@ -68,7 +78,9 @@
     display: none;
   }
   .gridcontainer {
-    margin: auto
+    margin: auto;
+    display: flex;
+    flex-direction: column;
   }
   .aboutcontainer {
     width: 80%;
@@ -79,10 +91,28 @@
   .gridsize {
     display: none
   }
+  .mobilecontainer {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 30px;
+    cursor: pointer;
+  }
+  .hamcontainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 50px;
+  }
+  .desktopsection {
+    display: none
+  }
 }
 @media (min-width: 900px) and (max-width: 1300px) {
   .gridcontainer {
-    margin-left: 2%
+    margin-left: 2%;
+    
   }
   .rulecontainer {
     margin-right: 2%

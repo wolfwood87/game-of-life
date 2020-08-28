@@ -19,7 +19,6 @@ const [playing, setPlaying] = useState(false)
 const [currentState, setCurrentState] = useState(Grids(size, "default"))
 const [currentGen, setCurrentGen] = useState(0)
 const [clickable, setClickable] = useState(true)
-const mobileSize = window.matchMedia("(min-width: 400")
 
 const gridContainer = {
     border: "1px solid black",
@@ -247,6 +246,13 @@ RunGame(runAlgorithm, speed, currentState, clickable)
                 <option value={30}>Medium</option>
                 <option value={40}>Large</option>
             </select>
+            <div className="mobilecontainer">
+                <p onClick={() => setGrid("beehive")}>Preset #1</p>
+                <p onClick={() => setGrid("beacon")}>Preset #2</p>
+                <p onClick={() => setGrid("spaceship")}>Preset #3</p>
+                <p onClick={() => setGrid("glider")}>Preset #4</p>
+                <p onClick={() => setGrid("decathlon")}>Preset #5</p>
+            </div>
             <div style={gridContainer}>
                 {currentState.map((branch, i) => (
                     <Cell cell={branch} key={i} setCell={setCell} gen = {currentGen} clickable={clickable} aliveColor={aliveColor}/>
