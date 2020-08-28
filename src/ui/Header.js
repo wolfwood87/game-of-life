@@ -6,7 +6,8 @@ export default function Header(props) {
         padding: ".5%",
         backgroundColor: "#1e6de1",
         color: "white", 
-        borderBottom: "1px solid black"
+        borderBottom: "1px solid black",
+        marginTop: 0
     }
     return (
         <div>
