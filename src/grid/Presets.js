@@ -4,12 +4,10 @@ import LWSS from "../assets/LWSS.gif"
 import Beacon from "../assets/Beacon.gif"
 import Beehive from "../assets/Beehive.png"
 import lColumn from "../assets/lColumn.gif"
+import '../App.css';
 export default function Presets(props) {
 const imageContainer= {
-    display: "flex",
-    flexDirection: "column",
-    backgroundColor: "white",
-    border: "1px solid black"
+    
 }
 const header = {
     border: "1px solid black",
@@ -30,7 +28,7 @@ const image = {
     marginLeft: "27%",
 }
     return (
-        <div style={imageContainer}>
+        <div className="presetcontainer">
             <h4 style={header}>Presets</h4>
             <div onClick={() => props.setGrid("beehive")}>
                 <h6 style={subheader}>Beehive</h6>

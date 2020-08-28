@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import Grid from "./Grid.js"
 import Rules from "../ui/Rules.js"
 import About from "../ui/About.js"
+import '../App.css';
 export default function GridDisplay(props) {
     const main = {
         display: "flex",
@@ -11,7 +12,6 @@ export default function GridDisplay(props) {
     }
     const container = {
         display: "flex",
-        flexDirection: "row",
         marginTop: "5%",
         justifyContent: "space-between",
       }
@@ -27,7 +27,7 @@ export default function GridDisplay(props) {
     }
     return (
         <div style={main}>
-        <div style={container}>
+        <div style={container} className="displaycontainer">
             <Grid />
             <Rules />
         </div>

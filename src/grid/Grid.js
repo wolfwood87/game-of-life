@@ -5,6 +5,7 @@ import Grids from "./Grids.js"
 import { SketchPicker } from "react-color"
 import findNeighbors from "./FindNeighbors.js"
 import Presets from "./Presets.js"
+import '../App.css';
 export default function Grid(props) {
 const [size, setSize] = useState(25)
 const [speed, setSpeed] = useState(2500)
@@ -18,11 +19,8 @@ const [playing, setPlaying] = useState(false)
 const [currentState, setCurrentState] = useState(Grids(size, "default"))
 const [currentGen, setCurrentGen] = useState(0)
 const [clickable, setClickable] = useState(true)
+const mobileSize = window.matchMedia("(min-width: 400")
 
-
-const container = {
-    display: "flex"
-}
 const gridContainer = {
     border: "1px solid black",
     backgroundColor: `rgba(${deadColor.r}, ${deadColor.g}, ${deadColor.b}, ${deadColor.a})`,
@@ -240,11 +238,11 @@ const changeSpeed = e => {
 }
 RunGame(runAlgorithm, speed, currentState, clickable)
     return (
-        <div style={container}>
+        <div className="gridcontainer">
             <div>
             <h3 style={heading}>Generation {currentGen}</h3>
-            <label for="grid" style={gridStyle}>Grid Size:</label>
-            <select name="grids" id="grids" onChange={chooseGrid}>
+            <label for="grid" className="gridsize"style={gridStyle}>Grid Size:</label>
+            <select name="grids" className="gridsize" id="grids" onChange={chooseGrid}>
                 <option value={25}>Small</option>
                 <option value={30}>Medium</option>
                 <option value={40}>Large</option>
