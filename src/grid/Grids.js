@@ -3,7 +3,7 @@ export default function Grids(size, type) {
 
 for(var i = 0; i < size; i++){
     for(var t=0; t < size; t++){
-        grid.push({id:`${i}${t}`, x:i, y:t, alive: false})
+        grid.push({id:`${i}|${t}`, x:i, y:t, alive: false})
     }
 }
 //default 25

@@ -115,7 +115,7 @@ const newDead = color => {
 const setCell = (cell) => {
     let newState = currentState.map((branch) => {
         
-        if(branch.x === cell.x && branch.y == cell.y) {
+        if(branch.x === cell.x && branch.y === cell.y) {
             return {...branch, alive: !branch.alive}
             
         }
@@ -157,7 +157,7 @@ function findNeighbors(x, y) {
         let y = neigh[1]
 
         let neighborCell = currentState.filter(cell => (
-            cell.x == x && cell.y == y
+            cell.x === x && cell.y === y
         ))
         neighbors.push(neighborCell)
     }
