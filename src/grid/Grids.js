@@ -9,7 +9,7 @@ export default function Grids(size, type) {
         }
     }
     //default 25
-
+    //preset grids calculate their position from the middle 
     let mid = Math.floor(size/2)
     const beehive = grid.map(cell => {
         if(cell.x === mid-2 && cell.y === mid+1) {

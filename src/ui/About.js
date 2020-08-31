@@ -13,7 +13,7 @@ export default function About() {
     return(
         <div className="aboutcontainer">
             <h2 style={header}>About Conway's Game of Life</h2>
-            <img src={Conway} className="aboutimage"/>
+            <img src={Conway} className="aboutimage" alt="John Horton Conway"/>
             <p style={label}>John Horton Conway</p>
             <p>The Game of Life is Conway's most well known achievement and is one of the first examples of cellular automation. Cellular automation consists of a grid of cells that exist in a series of states.  Each cell examines its neighboring cells and creates a new generation of cells based on a predetermined list of rules.</p>
             <p>The Game of Life also expressed a concept known as Turing completeness, in other words, it can simulate a Turing machine, which is an abstract model on which modern computers are made.</p>

@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 import Grid from "./Grid.js"
 import Rules from "../ui/Rules.js"
 import About from "../ui/About.js"

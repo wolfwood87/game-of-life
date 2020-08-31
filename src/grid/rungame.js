@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react"
+import { useRef, useEffect } from "react"
 
 //helper function to attach a reference to the game so it updates
 export default function RunGame(cb, time, tree, cl) {

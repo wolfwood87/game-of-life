@@ -32,23 +32,23 @@ const image = {
                 <h4 style={header}>Presets</h4>
                 <div onClick={() => props.setGrid("beehive")}>
                     <h6 style={subheader}>Beehive</h6>
-                    <img src={Beehive} style={image}/>
+                    <img src={Beehive} style={image} alt="Beehive"/>
                 </div>
                 <div onClick={() => props.setGrid("beacon")}>
                     <h6 style={subheader}>Beacon</h6>
-                    <img src={Beacon} style={image}/>
+                    <img src={Beacon} style={image} alt="Beacon preset"/>
                 </div>
                 <div onClick={() => props.setGrid("spaceship")}>
                     <h6 style={subheader}>Lightweight SpaceShip</h6>
-                    <img src={LWSS} style={image}/>
+                    <img src={LWSS} style={image} alt="Spaceship preset"/>
                 </div>
                 <div onClick={() => props.setGrid("glider")}>
                     <h6 style={subheader}>Glider</h6>
-                    <img src={Glider} style={image}/>
+                    <img src={Glider} style={image} alt="Glider preset"/>
                 </div>
                 <div onClick={() => props.setGrid("decathlon")}>
                     <h6 style={subheader}>Penta-decathlon</h6>
-                    <img src={lColumn} style={image}/>
+                    <img src={lColumn} style={image} alt="Decathlon preset"/>
                 </div>
             </div>
         </div>

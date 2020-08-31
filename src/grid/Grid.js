@@ -1,9 +1,8 @@
-import React, {useState, useRef, useEffect} from "react";
+import React, { useState, useRef } from "react";
 import Cell from "./Cell.js";
 import RunGame from "./rungame.js";
 import Grids from "./Grids.js"
 import { SketchPicker } from "react-color"
-import findNeighbors from "./FindNeighbors.js"
 import Presets from "./Presets.js"
 import '../App.css';
 //this component is for the basic grid setup on which the game is based

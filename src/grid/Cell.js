@@ -2,8 +2,7 @@ import React, { useState, useEffect } from "react";
 
 //cell component
 export default function Cell(props) {
-    const [cellblock, setCellBlock] = useState(props.cell)
-    const [alive, setAlive] = useState(false)
+    const [cellblock] = useState(props.cell)
     const [clicked, setClicked] = useState(false)
     //inline styles for cell
     const block = {   
@@ -29,11 +28,9 @@ export default function Cell(props) {
     useEffect(() => {
         if(props.cell.alive === true){
             setClicked(true)
-            setAlive(true)
         }
         else{
-            setClicked(false)
-            setAlive(false)
+            setClicked(false)   
         }
     },[props.cell])
     return (
