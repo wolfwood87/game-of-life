@@ -3,6 +3,8 @@ import Grid from "./Grid.js"
 import Rules from "../ui/Rules.js"
 import About from "../ui/About.js"
 import '../App.css';
+
+//this component sets up a basic layout for the website
 export default function GridDisplay(props) {
     const main = {
         display: "flex",

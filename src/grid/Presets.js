@@ -5,8 +5,9 @@ import Beacon from "../assets/Beacon.gif"
 import Beehive from "../assets/Beehive.png"
 import lColumn from "../assets/lColumn.gif"
 import '../App.css';
+//the preset component has the list of preset arrangements. 
 export default function Presets(props) {
-
+//inline styles
 const header = {
     border: "1px solid black",
     backgroundColor: "darkgrey",
