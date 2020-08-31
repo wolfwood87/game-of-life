@@ -1,12 +1,14 @@
-import React, {useState, useRef, useEffect} from "react";
+import React, { useState, useRef } from "react";
 import Cell from "./Cell.js";
 import RunGame from "./rungame.js";
 import Grids from "./Grids.js"
 import { SketchPicker } from "react-color"
-import findNeighbors from "./FindNeighbors.js"
 import Presets from "./Presets.js"
 import '../App.css';
+//this component is for the basic grid setup on which the game is based
 export default function Grid(props) {
+
+//states are set up that we will need later. These adjust the size, speed, colors, and the current state of the grid.
 const [size, setSize] = useState(25)
 const [speed, setSpeed] = useState(2500)
 const [aliveModal, setAliveModal] = useState(false)
@@ -20,6 +22,8 @@ const [currentState, setCurrentState] = useState(Grids(size, "default"))
 const [currentGen, setCurrentGen] = useState(0)
 const [clickable, setClickable] = useState(true)
 
+
+//inline styles
 const gridContainer = {
     border: "1px solid black",
     backgroundColor: `rgba(${deadColor.r}, ${deadColor.g}, ${deadColor.b}, ${deadColor.a})`,
@@ -85,6 +89,10 @@ const gridStyle = {
 const slider = {
     marginLeft: "22%"
 }
+
+//functions
+
+//sets the modals for the color pickers to show up and adds a listener to handle outside clicks
 const openAliveModal = e => {
     setAliveModal(true)
     document.addEventListener("mousedown", handleAliveClick);
@@ -93,6 +101,8 @@ const openDeadModal = e => {
     setDeadModal(true)
     document.addEventListener("mousedown", handleDeadClick);
 }
+
+//starts and stops the game and makes it so you can't click a cell while it's running
 const startPlay = e => {
     setClickable(false)
     setPlaying(true)
@@ -101,10 +111,14 @@ const stopPlay = e => {
     setPlaying(false)
     setClickable(true)
 }
+
+//for preset grid setup. Clicking on a preset in the presets component resets the grid
 const setGrid = (grid) => {
     setCurrentGen(0)
     setCurrentState(Grids(size, grid))
 }
+
+//on clicking a color in the modal the corosponding color is set
 const newAlive = color => {
     console.log(color)
     setAliveColor(color.rgb)
@@ -112,6 +126,8 @@ const newAlive = color => {
 const newDead = color => {
     setDeadColor(color.rgb)
 }
+
+//function sent to cell component to click on a cell and turn it from dead to alive
 const setCell = (cell) => {
     let newState = currentState.map((branch) => {
         
@@ -123,11 +139,15 @@ const setCell = (cell) => {
     })
     setCurrentState(newState)
 }
+
+//meant for resizing grid.
 const chooseGrid = e => {
     console.log(e.target.value)
     setSize(e.target.value)
     setCurrentState(Grids(e.target.value, "default"))
 }
+
+//clears grid and resets to first generation
 const clearBoard = e => {
     e.preventDefault()
     if(clickable){
@@ -136,6 +156,7 @@ const clearBoard = e => {
     }
 }
 
+//sets up random assortment of cells
 const setRandom = e => {
     e.preventDefault();
     setCurrentGen(0)
@@ -148,6 +169,8 @@ const setRandom = e => {
     }
     setCurrentState(randGrid)
 }
+
+//helper function to find all the neighbors to the cell when the algorithm is run
 function findNeighbors(x, y) {
     let neighbors = []
     const directions = [[x-1, y-1], [x-1, y], [x-1, y+1], [x, y+1], [x+1, y+1], [x+1, y-1], [x, y-1], [x+1, y]]
@@ -163,6 +186,8 @@ function findNeighbors(x, y) {
     }
     return neighbors
 }
+
+//algorithm to run game. Sets a next generation to the current state and for each cell measures it against its neighbors to find how many are living and adjusts accordingly. The current gen is updated and the current state is made the next state
 const runAlgorithm = () => {
             const nextGen = currentState.map((cell, i) => {
                 console.log(cell)
@@ -211,6 +236,8 @@ const runAlgorithm = () => {
             setCurrentGen(currentGen + 1)
             setCurrentState(nextGen)
 }
+
+//handler for the modal that looks for click outside and closes.
 const handleAliveClick = e => {
     if (aliveNode.current.contains(e.target)) {
       // inside click
@@ -231,10 +258,12 @@ const handleDeadClick = e => {
     setDeadModal(false)
 
 }
-
+//changes the speed that the game is currently running
 const changeSpeed = e => {
     setSpeed(e.target.value)
 }
+
+//helper for running the game that holds the reference
 RunGame(runAlgorithm, speed, currentState, clickable)
     return (
         <div className="gridcontainer">
@@ -264,7 +293,7 @@ RunGame(runAlgorithm, speed, currentState, clickable)
                 <input type="range" min="100" max="5000" value={speed} style={slider} onChange={changeSpeed}></input>
             </div>
             <div>
-                {playing == false ? (
+                {playing === false ? (
                 <div style={buttonContainer}>               
                     <button style={button} onClick={(e) => {e.preventDefault(); startPlay(); runAlgorithm()}}>&#9658;</button>
                     <button style={pauseButton} disabled>&#9646;&#9646;</button>
